@@ -8,3 +8,8 @@
 
 操作视频: <iframe width="560" height="315" src="/video/operation.mp4" frameborder="0" allowfullscreen></iframe>
 
+下载地址：http://fir.im/rm8k
+
+
+目前兼容性可能不太好，希望大佬多多提Bug   邮件 ： zhangjian.kims@gmail.com
+
