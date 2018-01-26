@@ -22,29 +22,22 @@ public class CustomDialog {
 
     public void showView(CharSequence title, CharSequence message, final OnDialogClick click) {
         if (dialog != null) {
-            dialog.setTitle(title);
-            dialog.setMessage(message);
-            dialog.setPositiveButton("确定", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    click.onDecideClick(v);
-                }
-            });
-            dialog.show();
+//            dialog.setTitle(title);
+//            dialog.setMessage(message);
+//            dialog.setPositiveButton("确定", click::onDecideClick);
+//            dialog.show();
+
+            this.showImageView(title, message, null, click);
         }
 
     }
 
-    public void showImageView(CharSequence title, View view, final OnDialogClick click) {
+    public void showImageView(CharSequence title, CharSequence message, View view, final OnDialogClick click) {
         if (dialog != null) {
             dialog.setTitle(title);
+            dialog.setMessage(message);
             dialog.setContentView(view);
-            dialog.setPositiveButton("确定", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    click.onDecideClick(v);
-                }
-            });
+            dialog.setPositiveButton("确定", click::onDecideClick);
             dialog.show();
         }
     }

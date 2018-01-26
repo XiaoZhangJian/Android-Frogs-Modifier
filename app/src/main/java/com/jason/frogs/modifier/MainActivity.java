@@ -1,5 +1,7 @@
 package com.jason.frogs.modifier;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,11 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jason.frogs.modifier.model.Frogs;
 import com.jason.frogs.modifier.tool.CustomDialog;
+import com.jason.frogs.modifier.tool.ImageTool;
 import com.jason.frogs.modifier.tool.Modifier;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
@@ -75,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
+    @OnClick(R.id.course_bt)
+    public void onCourse(View v) {
+        showDialog(getString(R.string.course_bt), getString(R.string.course_str));
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,22 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.menu_reward:
                 rewardDialog("赏赐");
                 break;
             case R.id.menu_about:
-
-                final CustomDialog dialog = new CustomDialog(this);
-                dialog.showView(getString(R.string.menu_about), getString(R.string.about_str), new CustomDialog.OnDialogClick() {
-                    @Override
-                    public void onDecideClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-
+                showDialog(getString(R.string.menu_about), getString(R.string.about_str));
                 break;
             default:
                 break;
@@ -134,16 +133,35 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private void rewardDialog(String title) {
-
+    private void showDialog(String title, String msg) {
         final CustomDialog dialog = new CustomDialog(this);
-        dialog.showImageView(title, getLayoutInflater().inflate(R.layout.reward_dialog_layout, null), new CustomDialog.OnDialogClick() {
-            @Override
-            public void onDecideClick(View v) {
-                Toast.makeText(MainActivity.this, "感谢各位小哥哥，小姐姐，打赏！", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+        dialog.showView(title, msg, v -> dialog.dismiss());
+
+    }
+
+    private void rewardDialog(String title) {
+        final CustomDialog dialog = new CustomDialog(this);
+
+        View view = getLayoutInflater().inflate(R.layout.reward_dialog_layout, null);
+
+        ImageView imageView = view.findViewById(R.id.image_reward);
+
+        dialog.showImageView(title, null, view, v -> {
+            Toast.makeText(MainActivity.this, "感谢各位小哥哥，小姐姐，打赏！", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+
+        });
+
+        imageView.setOnClickListener(v -> {
+
+            Bitmap bitmap  = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_reward);
+            if (ImageTool.saveImageToGallery(this,bitmap)){
+                Toast.makeText(this, "保存成功！", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "保存失败！", Toast.LENGTH_SHORT).show();
 
             }
+
         });
 
     }

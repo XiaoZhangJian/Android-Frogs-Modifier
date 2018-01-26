@@ -6,7 +6,9 @@
     <string name="number">%d</string>
     <string name="edit_toast">修改成功，请重新进入游戏！</string>
     <string name="err_toast">权限已拒绝，不能进行读取和修改数量！</string>
-    <string name="menu_reward">大爷来赏一下</string>
+    <string name="menu_reward">打赏</string>
     <string name="menu_about">关于</string>
     <string name="about_str">该版本仅支持官方版本游戏修改，不支持汉化版本，谢谢使用</string>
+    <string name="course_bt">简单教程</string>
+    <string name="course_str">操作流程： \n    首次安装APP 需要同意权限，然后输入所需要的数量点击提交即可。\n\n此修改器只支持官网版本，不支持汉化版 \n\n打赏流程：保存二维码进入微信选择扫一扫然后选择相册图片即可</string>
 </resources>

@@ -10,12 +10,18 @@
     tools:context="com.jason.frogs.modifier.MainActivity">
 
 
+    <Button
+        android:id="@+id/course_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/course_bt" />
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="读取游戏内容："
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/show_tv"
@@ -71,6 +77,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/m_submit_str" />
+
+
     </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="各位小哥哥，小姐姐。如果觉得小子软件还可以随便打赏一二，赏口饭吃！不打赏也可随意使用哦！"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
 
 </LinearLayout>
